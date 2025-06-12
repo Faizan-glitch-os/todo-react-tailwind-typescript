@@ -1,1 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
 @import "tailwindcss";
+
+@theme {
+  --font-montserrat: "Montserrat", "sans-serif";
+}
+
+button {
+  @apply p-2 px-4 text-xl text-slate-500 rounded-lg bg-white
+  hover:text-slate-700 hover:cursor-pointer hover:text-2xl
+  hover:rounded-sm hover:-translate-y-2 duration-200;
+}
+
+#checkbox {
+  @apply transition duration-110 accent-green-400 w-6 h-6 rounded-full border-2 border-amber-300;
+}
