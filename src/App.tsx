@@ -1,4 +1,6 @@
 import { useState, type FormEvent } from "react";
+import { motion, scale, spring } from "motion/react";
+
 import ShowTodos from "./components/CompletedTodos";
 
 export type todoType = {
@@ -41,7 +43,12 @@ function App() {
   const completed: todoType[] = allTodos.filter((todo) => todo.completed);
 
   return (
-    <div className="sm:w-[90vw] md:w-[50vw] flex flex-col gap-4 p-4 rounded-4xl bg-amber-50/30">
+    <motion.div
+      initial={{ scale: 0 }}
+      animate={{ scale: 1 }}
+      transition={{ duration: 1, type: spring }}
+      className="sm:w-[90vw] md:w-[50vw] flex flex-col gap-4 p-4 rounded-4xl bg-amber-50/30"
+    >
       <h1 className="text-white text-3xl">Todo List</h1>
       <form className="mb-8 flex gap-4" onSubmit={addTodo}>
         <input
@@ -52,8 +59,16 @@ function App() {
           id="newTodo"
           placeholder="new todo"
         />
-        <button type="submit">Add</button>
+        <motion.button
+          variants={{ hover: { scale: 1.1 }, tap: { scale: 0.9 } }}
+          whileHover="hover"
+          whileTap="tap"
+          type="submit"
+        >
+          Add
+        </motion.button>
       </form>
+      <h2 className="text-lg text-amber-50">Total ({allTodos.length})</h2>
       <ShowTodos
         onDelete={deleteTodo}
         onCompleted={completeTodo}
@@ -67,7 +82,7 @@ function App() {
         onCompleted={completeTodo}
         todos={completed}
       />
-    </div>
+    </motion.div>
   );
 }
 
