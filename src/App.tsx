@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from "react";
-import CompletedTodos from "./components/CompletedTodos";
+import ShowTodos from "./components/CompletedTodos";
 
 export type todoType = {
   id: number;
@@ -23,18 +23,29 @@ function App() {
       todo: newTodo as string,
     };
     setTodos((prevTodos) => [...prevTodos, todo]);
-    console.log(allTodos);
   }
 
   function deleteTodo(id: number) {
     setTodos((prevTodos) => prevTodos.filter((todo) => id !== todo.id));
   }
 
+  function completeTodo(id: number) {
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
+  }
+
+  const unCompleted: todoType[] = allTodos.filter((todo) => !todo.completed);
+  const completed: todoType[] = allTodos.filter((todo) => todo.completed);
+
   return (
     <div className="sm:w-[90vw] md:w-[50vw] flex flex-col gap-4 p-4 rounded-4xl bg-amber-50/30">
       <h1 className="text-white text-3xl">Todo List</h1>
-      <form className="flex gap-4" onSubmit={addTodo}>
+      <form className="mb-8 flex gap-4" onSubmit={addTodo}>
         <input
+          required
           className="text-xl w-full bg-white rounded-xl p-4 text-slate-900 focus:outline-none"
           type="text"
           name="newTodo"
@@ -43,9 +54,18 @@ function App() {
         />
         <button type="submit">Add</button>
       </form>
-      <CompletedTodos
+      <ShowTodos
         onDelete={deleteTodo}
-        completedTodos={allTodos.filter((todo) => !todo.completed)}
+        onCompleted={completeTodo}
+        todos={unCompleted}
+      />
+      <h2 className="text-lg text-amber-50 mt-8">
+        Completed ({completed.length}/{unCompleted.length})
+      </h2>
+      <ShowTodos
+        onDelete={deleteTodo}
+        onCompleted={completeTodo}
+        todos={completed}
       />
     </div>
   );
