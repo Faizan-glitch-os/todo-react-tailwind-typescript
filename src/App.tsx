@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from "react";
-import { motion, scale, spring } from "motion/react";
+import { motion, spring } from "motion/react";
 
-import ShowTodos from "./components/CompletedTodos";
+import ShowTodos from "./components/ShowTodos";
 
 export type todoType = {
   id: number;
@@ -47,7 +47,7 @@ function App() {
       initial={{ scale: 0 }}
       animate={{ scale: 1 }}
       transition={{ duration: 1, type: spring }}
-      className="sm:w-[90vw] md:w-[50vw] flex flex-col gap-4 p-4 rounded-4xl bg-amber-50/30"
+      className="sm:w-[90vw] md:w-[70vw] lg:w-[60vw] flex flex-col gap-4 p-4 rounded-4xl bg-amber-50/30"
     >
       <h1 className="text-white text-3xl">Todo List</h1>
       <form className="mb-8 flex gap-4" onSubmit={addTodo}>
