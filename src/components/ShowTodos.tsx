@@ -14,7 +14,6 @@ export default function ShowTodos({
 }: completedTodosPropsType) {
   return (
     <>
-      {!todos && <p className="text-md text-amber-50">No todo added yet</p>}
       <motion.ul className="flex flex-col gap-2">
         <AnimatePresence>
           {todos &&

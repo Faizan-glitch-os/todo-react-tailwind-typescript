@@ -47,7 +47,7 @@ function App() {
       initial={{ scale: 0 }}
       animate={{ scale: 1 }}
       transition={{ duration: 1, type: spring }}
-      className="sm:w-[90vw] md:w-[70vw] lg:w-[60vw] flex flex-col gap-4 p-4 rounded-4xl bg-amber-50/30"
+      className="mt-8 sm:w-[90vw] md:w-[70vw] lg:w-[60vw] flex flex-col gap-4 p-4 rounded-4xl bg-amber-50/30"
     >
       <h1 className="text-white text-3xl">Todo List</h1>
       <form className="mb-8 flex gap-4" onSubmit={addTodo}>
@@ -69,6 +69,9 @@ function App() {
         </motion.button>
       </form>
       <h2 className="text-lg text-amber-50">Todos</h2>
+      {!unCompleted.length && (
+        <p className="text-sm text-amber-50">No todo added yet</p>
+      )}
       <ShowTodos
         onDelete={deleteTodo}
         onCompleted={completeTodo}
