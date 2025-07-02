@@ -25,6 +25,7 @@ function App() {
       todo: newTodo as string,
     };
     setTodos((prevTodos) => [...prevTodos, todo]);
+    event.currentTarget.reset();
   }
 
   function deleteTodo(id: number) {
