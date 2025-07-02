@@ -68,15 +68,13 @@ function App() {
           Add
         </motion.button>
       </form>
-      <h2 className="text-lg text-amber-50">Total ({allTodos.length})</h2>
+      <h2 className="text-lg text-amber-50">Todos</h2>
       <ShowTodos
         onDelete={deleteTodo}
         onCompleted={completeTodo}
         todos={unCompleted}
       />
-      <h2 className="text-lg text-amber-50 mt-8">
-        Completed ({completed.length}/{unCompleted.length})
-      </h2>
+      <h2 className="text-lg text-amber-50 mt-8">Completed</h2>
       <ShowTodos
         onDelete={deleteTodo}
         onCompleted={completeTodo}

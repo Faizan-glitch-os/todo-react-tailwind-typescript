@@ -20,13 +20,13 @@ export default function ShowTodos({
           {todos &&
             todos.map((todo) => (
               <motion.li
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.2, type: spring }}
-                exit={{ opacity: 0, x: 50 }}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3, type: spring }}
+                exit={{ opacity: 0, y: 50 }}
                 layout
                 key={todo.id}
-                className={todo.completed ? "!bg-pink-500" : ""}
+                className={todo.completed ? "!bg-pink-500/70" : ""}
               >
                 <motion.input
                   whileHover={{ scale: 1.1 }}
